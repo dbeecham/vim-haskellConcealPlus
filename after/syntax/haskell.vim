@@ -95,7 +95,7 @@ if s:extraConceal
     " Only replace the dot, avoid taking spaces around.
     syntax match hsNiceOperator /\s\.\s/ms=s+1,me=e-1 conceal cchar=∘
 
-    "syntax match hsQQEnd "|\]" contained conceal cchar=〛
+    syntax match hsQQEnd "|\]" contained conceal cchar=〛
     " sy match hsQQEnd "|\]" contained conceal=〚
 
     syntax match hsNiceOperator "`elem`" conceal cchar=∈
@@ -121,53 +121,53 @@ hi! link Conceal Operator
 setlocal conceallevel=2
 
 " '℘' option to disable concealing of powerset function
-"if !Cf('℘')
+if !Cf('℘')
     syntax match hsNiceOperator "\<powerset\>" conceal cchar=℘
-"endif
+endif
 
 " '𝐒' option to disable String type to 𝐒 concealing
-"if !Cf('𝐒')
-"    syntax match hsNiceOperator "\<String\>"  conceal cchar=𝐒
-"endif
+if !Cf('𝐒')
+    syntax match hsNiceOperator "\<String\>"  conceal cchar=𝐒
+endif
 
 " '𝐓' option to disable Text type to 𝐓 concealing
-"if !Cf('𝐓')
-"    syntax match hsNiceOperator "\<Text\>"    conceal cchar=𝐓
-"endif
+if !Cf('𝐓')
+    syntax match hsNiceOperator "\<Text\>"    conceal cchar=𝐓
+endif
 
 " '𝐄' option to disable Either/Right/Left to 𝐄/𝑅/𝐿 concealing
-"if !Cf('𝐄')
-"    syntax match hsNiceOperator "\<Either\>"  conceal cchar=𝐄
-"    syntax match hsNiceOperator "\<Right\>"   conceal cchar=𝑅
-"    syntax match hsNiceOperator "\<Left\>"    conceal cchar=𝐿
-"endif
+if !Cf('𝐄')
+    syntax match hsNiceOperator "\<Either\>"  conceal cchar=𝐄
+    syntax match hsNiceOperator "\<Right\>"   conceal cchar=𝑅
+    syntax match hsNiceOperator "\<Left\>"    conceal cchar=𝐿
+endif
 
 " '𝐌' option to disable Maybe/Just/Nothing to 𝐌/𝐽/𝑁 concealing
-"if !Cf('𝐌')
-    "syntax match hsNiceOperator "\<Maybe\>"   conceal cchar=𝐌
-    "syntax match hsNiceOperator "\<Just\>"    conceal cchar=𝐽
-    "syntax match hsNiceOperator "\<Nothing\>" conceal cchar=𝑁
-"endif
+if !Cf('𝐌')
+    syntax match hsNiceOperator "\<Maybe\>"   conceal cchar=𝐌
+    syntax match hsNiceOperator "\<Just\>"    conceal cchar=𝐽
+    syntax match hsNiceOperator "\<Nothing\>" conceal cchar=𝑁
+endif
 
 " 'A' option to not try to preserve indentation.
-"if Cf('A')
+if Cf('A')
     syntax match hsNiceOperator "<-" conceal cchar=←
     syntax match hsNiceOperator "->" conceal cchar=→
     syntax match hsNiceOperator "=>" conceal cchar=⇒
     syntax match hsNiceOperator "\:\:" conceal cchar=∷
-"else
-    "syntax match hsLRArrowHead contained ">" conceal cchar= 
-    "syntax match hsLRArrowTail contained "-" conceal cchar=→
-    "syntax match hsLRArrowFull "->" contains=hsLRArrowHead,hsLRArrowTail
+else
+    syntax match hsLRArrowHead contained ">" conceal cchar= 
+    syntax match hsLRArrowTail contained "-" conceal cchar=→
+    syntax match hsLRArrowFull "->" contains=hsLRArrowHead,hsLRArrowTail
 
-    "syntax match hsRLArrowHead contained "<" conceal cchar=←
-    "syntax match hsRLArrowTail contained "-" conceal cchar= 
-    "syntax match hsRLArrowFull "<-" contains=hsRLArrowHead,hsRLArrowTail
+    syntax match hsRLArrowHead contained "<" conceal cchar=←
+    syntax match hsRLArrowTail contained "-" conceal cchar= 
+    syntax match hsRLArrowFull "<-" contains=hsRLArrowHead,hsRLArrowTail
 
-    "syntax match hsLRDArrowHead contained ">" conceal cchar= 
-    "syntax match hsLRDArrowTail contained "=" conceal cchar=⇒
-    "syntax match hsLRDArrowFull "=>" contains=hsLRDArrowHead,hsLRDArrowTail
-"endif
+    syntax match hsLRDArrowHead contained ">" conceal cchar= 
+    syntax match hsLRDArrowTail contained "=" conceal cchar=⇒
+    syntax match hsLRDArrowFull "=>" contains=hsLRDArrowHead,hsLRDArrowTail
+endif
 
 " 's' option to disable space consumption after ∑,∏,√ and ¬ functions.
 if Cf('s')
@@ -183,12 +183,12 @@ else
 endif
 
 " '*' option to enable concealing of asterisk with '⋅' sign.
-"if Cf('*')
-"    syntax match hsNiceOperator "*" conceal cchar=⋅
+if Cf('*')
+    syntax match hsNiceOperator "*" conceal cchar=⋅
 " 'x' option to disable default concealing of asterisk with '×' sign.
-"elseif !Cf('x')
+elseif !Cf('x')
     syntax match hsNiceOperator "*" conceal cchar=×
-"endif
+endif
 
 " 'E' option to enable ellipsis concealing with ‥  (two dot leader).
 if Cf('E')
@@ -219,30 +219,27 @@ if !Cf('r')
 endif
 
 " 'b' option to disable bind (left and right) concealing
-"if Cf('b')
+if Cf('b')
     " Vim has some issues concealing with composite symbols like '«̳', and
     " unfortunately there is no other common short notation for both
     " binds. So 'b' option to disable bind concealing altogether.
 " 'f' option to enable formal (★) right bind concealing
-"elseif Cf('f')
-"    syntax match hsNiceOperator ">>="    conceal cchar=★
+elseif Cf('f')
+    syntax match hsNiceOperator ">>="    conceal cchar=★
 " 'c' option to enable encircled b/d (ⓑ/ⓓ) for right and left binds.
-"elseif Cf('c')
-"    syntax match hsNiceOperator ">>="    conceal cchar=ⓑ
-"    syntax match hsNiceOperator "=<<"    conceal cchar=ⓓ
+elseif Cf('c')
+    syntax match hsNiceOperator ">>="    conceal cchar=ⓑ
+    syntax match hsNiceOperator "=<<"    conceal cchar=ⓓ
 " 'h' option to enable partial concealing of binds (e.g. »=).
-"elseif Cf('h')
-"    syntax match hsNiceOperator ">>"     conceal cchar=»
-"    syntax match hsNiceOperator "<<"     conceal cchar=«
-"    syntax match hsNiceOperator "=\zs<<" conceal cchar=«
+elseif Cf('h')
+    syntax match hsNiceOperator ">>"     conceal cchar=»
+    syntax match hsNiceOperator "<<"     conceal cchar=«
+    syntax match hsNiceOperator "=\zs<<" conceal cchar=«
 " Left and right arrows with hooks are the default option for binds.
-"else
+else
     syntax match hsNiceOperator ">>=\ze\_[[:alpha:][:space:]_()[\]]" conceal cchar=↪
     syntax match hsNiceOperator "=<<\ze\_[[:alpha:][:space:]_()[\]]" conceal cchar=↩
-"endif
-
-syntax match hsNiceOperator "<|>" conceal cchar=⇆
-syntax match hsNiceOperator "\$" conceal cchar=⧼
+endif
 
 if !Cf('h')
     syntax match hsNiceOperator ">>\ze\_[[:alpha:][:space:]_()[\]]" conceal cchar=»
@@ -251,8 +248,8 @@ endif
 
 " 'C' option to enable encircled 'm' letter ⓜ concealing for fmap.
 if Cf('C')
-"    syntax match hsNiceOperator "<$>"    conceal cchar=ⓜ
-"    syntax match hsNiceOperator "`fmap`" conceal cchar=ⓜ
+    syntax match hsNiceOperator "<$>"    conceal cchar=ⓜ
+    syntax match hsNiceOperator "`fmap`" conceal cchar=ⓜ
 " 'l' option to disable fmap/lift concealing with ↥.
 elseif !Cf('l')
     syntax match hsNiceOperator "`liftM`" conceal cchar=↥
@@ -349,12 +346,12 @@ if !Cf('w')
 endif
 
 " '-' option to disable subtract/(-) concealing with ⊟.
-"if !Cf('-')
+if !Cf('-')
     " Minus is a special syntax construct in Haskell. We use squared minus to
     " tell the syntax from the binary function.
     syntax match hsNiceOperator "(-)"        conceal cchar=⊟
     syntax match hsNiceOperator "`subtract`" conceal cchar=⊟
-"endif
+endif
 
 " 'I' option to enable alternative ':+' concealing with with ⨢.
 if Cf('I')
@@ -372,36 +369,36 @@ if !Cf('R')
 endif
 
 " 'T' option to enable True/False constants concealing with bold 𝐓/𝐅.
-"if Cf('T')
-"    syntax match hsNiceSpecial "\<True\>"  conceal cchar=𝐓
-"    syntax match hsNiceSpecial "\<False\>" conceal cchar=𝐅
+if Cf('T')
+    syntax match hsNiceSpecial "\<True\>"  conceal cchar=𝐓
+    syntax match hsNiceSpecial "\<False\>" conceal cchar=𝐅
 " 't' option to disable True/False constants concealing with italic 𝑇/𝐹.
-"elseif !Cf('t')
-"    syntax match hsNiceSpecial "\<True\>"  conceal cchar=𝑇
-"    syntax match hsNiceSpecial "\<False\>" conceal cchar=𝐹
-"endif
+elseif !Cf('t')
+    syntax match hsNiceSpecial "\<True\>"  conceal cchar=𝑇
+    syntax match hsNiceSpecial "\<False\>" conceal cchar=𝐹
+endif
 
 " 'B' option to disable Bool type to 𝔹 concealing
-"if !Cf('B')
+if !Cf('B')
     " Not an official notation ttbomk. But at least
     " http://www.haskell.org/haskellwiki/Unicode-symbols mentions it.
     syntax match hsNiceOperator "\<Bool\>" conceal cchar=𝔹
-"endif
+endif
 
 " 'Q' option to disable Rational type to ℚ concealing.
-"if !Cf('Q')
+if !Cf('Q')
     syntax match hsNiceOperator "\<Rational\>" conceal cchar=ℚ
-"endif
+endif
 
 " 'Z' option to disable Integer type to ℤ concealing.
-"if !Cf('Z')
+if !Cf('Z')
     syntax match hsNiceOperator "\<Integer\>"  conceal cchar=ℤ
-"endif
+endif
 
 " '𝔻' option to disable Double type to 𝔻 concealing
-"if !Cf('𝔻')
-"    syntax match hsNiceOperator "\<Double\>"   conceal cchar=𝔻
-"endif
+if !Cf('𝔻')
+    syntax match hsNiceOperator "\<Double\>"   conceal cchar=𝔻
+endif
 
 " '1' option to disable numeric superscripts concealing, e.g. x².
 if !Cf('1')
@@ -447,12 +444,12 @@ if !Cf('a')
 endif
 
 " Not really Haskell, but quite handy for writing proofs in pseudo-code.
-"if Cf('∴')
+if Cf('∴')
     syntax match hsNiceOperator "\<therefore\>" conceal cchar=∴
     syntax match hsNiceOperator "\<exists\>" conceal cchar=∃
     syntax match hsNiceOperator "\<notExist\>" conceal cchar=∄
     syntax match hsNiceOperator ":=" conceal cchar=≝
-"endif
+endif
 
 " TODO:
 " See Basic Syntax Extensions - School of Haskell | FP Complete
